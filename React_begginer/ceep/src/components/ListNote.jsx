@@ -5,15 +5,14 @@ export default class ListNote extends Component {
 	render() {
 		return(
 			<ul>
-				<li>
-					<NoteCard/>
-				</li>
-				<li>
-					<NoteCard/>
-				</li>
-				<li>
-					<NoteCard/>
-				</li>
+				{Array.of("Trabalho", "Estudos", "Lazer").map(category => {
+					return(
+						<li>
+							<div>{category}</div>
+							<NoteCard/>
+						</li>
+					);
+				})}
 			</ul>
 		);
 	}
