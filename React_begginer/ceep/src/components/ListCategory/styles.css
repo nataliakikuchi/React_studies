@@ -1,0 +1,25 @@
+.list-category {
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+}
+
+.list-category_list {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.list-category_item {
+    background-color: var(--secundaria);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.list-category_input {
+    margin-right: 20px;
+    background-color: palevioletred;
+}
