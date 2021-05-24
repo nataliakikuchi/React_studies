@@ -13,7 +13,7 @@ export default class ListNote extends Component {
 				{this.props.notes.map((note, index) => {
 					return(
 						<li className = "list-note_item" key = {index}>
-							<NoteCard title = {note.title} trxt = {note.text} />
+							<NoteCard title = {note.title} text = {note.text} />
 						</li>
 					);
 				})}
