@@ -3,14 +3,17 @@ import NoteCard from '../NoteCard';
 import './styles.css';
 
 export default class ListNote extends Component {
+	// constructor(props) {
+	// 	super(props);
+	// }
+
 	render() {
 		return(
 			<ul className = "list-note">
-				{Array.of("Trabalho", "Estudos", "Lazer").map((category, index) => {
+				{this.props.notes.map((note, index) => {
 					return(
 						<li className = "list-note_item" key = {index}>
-							<div>{category}</div>
-							<NoteCard/>
+							<NoteCard title = {note.title} trxt = {note.text} />
 						</li>
 					);
 				})}
