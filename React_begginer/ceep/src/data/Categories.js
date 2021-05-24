@@ -8,6 +8,10 @@ export default class Categories {
         this._subscribers.push(func);
     }
 
+    unsubscribe(func) {
+        this._subscribers = this._subscribers.filter(functionn => functionn !== func);
+    }
+
     notify() {
         this._subscribers.forEach(func => { //para cada inscrito, forEach estou passando essa função anônima, que é a função que recebe como parâmetro uma função a executa
             func(this.categories);
@@ -16,6 +20,7 @@ export default class Categories {
     
     addCategory(newCategory) {
         this.categories.push(newCategory);
+        this.notify();
     }
 }
 

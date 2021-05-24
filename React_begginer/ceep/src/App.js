@@ -40,22 +40,21 @@ export default class App extends Component {
   // }
 
   render() {
-    console.log('render');
     return(
       // <h1>My First React App</h1>
       <section className = "content">
         <FormRegister 
-          categories = {this.categories.categories}
-          createNote = {this.notes.createNote}
+          categories = {this.categories}
+          createNote = {this.notes.createNote.bind(this.notes)}
         />
         <main className = 'main-content'>
           <ListCategory 
-            addCategory = {this.categories.addCategory}
-            categories = {this.categories.categories}
+            addCategory = {this.categories.addCategory.bind(this.categories)}
+            categories = {this.categories}
           />
           <ListNote 
-            deleteNote = {this.notes.deleteNote}
-            notes = {this.notes.notes}
+            deleteNote = {this.notes.deleteNote.bind(this.notes)}
+            notes = {this.notes}
           />
         </main>
       </section>
