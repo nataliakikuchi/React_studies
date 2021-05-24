@@ -15,6 +15,7 @@ render() {
 				<header className = "note-card-header">
 					<h3 className = "note-card-title">{this.props.title}</h3>
 					<DeleteIcon onClick = {this.delete.bind(this)}/>
+					<h4>{this.props.category}</h4>
 				</header>
 				<p className = "note-card-text">{this.props.text}</p>
 			</section>
