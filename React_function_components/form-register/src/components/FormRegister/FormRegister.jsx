@@ -1,10 +1,27 @@
-import React from 'react';
-import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core/Button';
+import React, { useState } from 'react';
+import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 
-function FormRegister() {
+function FormRegister({onSubmit}) { //ou (props)
+	const [name, setName] = useState("");
+	//const nome = arr[0];
+	//const setNome = arr[1];
+
+	const [lastName, setLastName] = useState("");
+	const [cpf, setCpf] = useState("");
+	const [promotions, setPromotions] = useState(true);
+	const [news, setNews] = useState(true);
+
   return(
-  	<form>
+  	<form onSubmit={(event) => {
+			event.preventDefault();
+			onSubmit({name, lastName, cpf, promotions, news}); //props.onSubmit({})
+			}}
+		>
 			<TextField 
+				value={name}
+				onChange={(event) => {
+					setName(event.target.value);
+				}}
 				id="name" 
 				label="Nome" 
 				variant="outlined" 
@@ -13,6 +30,10 @@ function FormRegister() {
 			/>
 
 			<TextField 
+				value={lastName}
+				onChange={(event) => {
+					setLastName(event.target.value);
+				}}
 				id="last-name" 
 				label="Sobrenome" 
 				variant="outlined" 
@@ -21,6 +42,10 @@ function FormRegister() {
 			/>
 
 			<TextField 
+				value={cpf}
+				onChange={(event) => {
+					setCpf(event.target.value);
+				}}
 				id="cpf" 
 				label="CPF" 
 				variant="outlined" 
@@ -30,12 +55,30 @@ function FormRegister() {
 
 			<FormControlLabel 
 				label="Promoções" 
-				control={<Switch name="promotions" defaultChecked color="primary" />} 
+				control={
+					<Switch 
+						checked={promotions}
+						onChange={(event) => {
+							setPromotions(event.target.checked);
+						}}
+						name="promotions" 
+						color="primary" 
+					/>
+				} 
 			/>
-			
+
 			<FormControlLabel
 				label="Novidades"
-				control={<Switch name="news" defaultChecked color="primary" />} 
+				control={
+					<Switch 
+						checked={news}
+						onChange={(event) => {
+							setNews(event.target.checked);
+						}}
+						name="news"
+						color="primary" 
+					/>
+				} 
 			/>
 
 			<Button type="submit" variant="contained" color="primary">Cadastrar</Button>
