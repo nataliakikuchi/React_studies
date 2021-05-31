@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 
-function FormRegister({onSubmit}) { //ou (props)
+function FormRegister({onSubmit, validateCPF}) { //ou (props). Injeção de dependência
 	const [name, setName] = useState("");
 	//const nome = arr[0];
 	//const setNome = arr[1];
@@ -10,6 +10,7 @@ function FormRegister({onSubmit}) { //ou (props)
 	const [cpf, setCpf] = useState("");
 	const [promotions, setPromotions] = useState(true);
 	const [news, setNews] = useState(true);
+	const [errors, setErrors] = useState({cpf:{valid:true, text:""}});
 
   return(
   	<form onSubmit={(event) => {
@@ -46,6 +47,12 @@ function FormRegister({onSubmit}) { //ou (props)
 				onChange={(event) => {
 					setCpf(event.target.value);
 				}}
+				onBlur={(event) => {
+					const isValid = validateCPF(event.target.value);
+					setErrors({cpf:isValid})
+				}}
+				error={!errors.cpf.valid}
+				helperText={errors.cpf.text}
 				id="cpf" 
 				label="CPF" 
 				variant="outlined" 
