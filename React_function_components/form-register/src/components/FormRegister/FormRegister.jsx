@@ -2,27 +2,23 @@ import React, { useState } from 'react';
 import PersonalData from './PersonalData';
 import UserData from './UserData';
 import DeliveryData from './DeliveryData';
-import { Typography } from '@material-ui/core';
 
 function FormRegister({onSubmit, validateCPF}) {
 	const [currentStep, setCurrentStep] = useState(0);
 
-	function currentRegister(currentStep) {
-		switch(currentStep) {
-				case 0: 
-					return <UserData/>
-				case 1:
-					return <PersonalData onSubmit={onSubmit} validateCPF={validateCPF} />
-				case 2:
-					return <DeliveryData/>
-					default:
-						return <Typography>Erro ao selecionar formulário</Typography>
-		}
+	const form = [
+		<UserData onSubmit={nextStep}/>, 
+		<PersonalData onSubmit={nextStep} validateCPF={validateCPF} />, 
+		<DeliveryData onSubmit={onSubmit} />, 
+	];
+
+	function nextStep() {
+		setCurrentStep(currentStep + 1);
 	}
 
   return(
 		<>
-		{currentRegister(currentStep)}
+		{form[currentStep]}
 		</>
 	);
 }
