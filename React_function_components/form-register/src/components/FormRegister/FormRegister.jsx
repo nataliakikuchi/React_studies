@@ -57,3 +57,7 @@ function FormRegister({ onSubmit }) {
 export default FormRegister;
 
 //O único problema que a gente tem agora é que a gente tentou renderizar nossa etapa 3 do formulário, nosso index 3, e esse formulário não tem index 3. É agora que a gente vai querer fazer a atualização e chamar, finalizei minha parte de cadastro, finalizei aqui e quero chamar o onSubmit. Vamos fazer isso para ter nosso formulário sendo chamado, enviando as informações de fato quando a gente terminar de preencher inteiro.
+
+// por causa do nosso contexto, nosso context provider, ele não precisa saber de informações que ele não quer, por exemplo, o que vai ser validado e como vai ser validado, porque para ele não interessa esse formulário de cadastro, é só um componente que faz o gerenciamento de renderização. Ele é como se fosse uma máquina de estados para o nosso formulário. Ele vai definir o que está sendo renderizado e quando está sendo renderizado, a partir de um estado dele que é uma etapa atual.
+
+// Além disso, ele vai coletando os dados e vai juntando, agregando eles para no final quando a gente estiver pronto para enviar esses dados chamar a propriedade de ao enviar que quem passou para mim foi meu app.js e esse app.js, ou quem quer que crie esse formulário pode decidir o que vai fazer com os dados que ele mesmo coletou.

@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
+import React, { useState } from "react";
+import { TextField, Button } from "@material-ui/core";
 
-function DeliveryData({onSubmit}) {
+function DeliveryData({ onSubmit }) {
   const [cep, setCep] = useState("");
   const [address, setAddress] = useState("");
   const [num, setNum] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [coupon, setCoupon] = useState("");
 
-  return(
-    <form onSubmit={(event) => {
-      event.preventDefault();
-      onSubmit({cep, address, num, city, state});
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit({ cep, address, num, city, state, coupon });
       }}
     >
       <TextField
@@ -19,8 +21,8 @@ function DeliveryData({onSubmit}) {
         onChange={(event) => {
           setCep(event.target.value);
         }}
-        id="cep" 
-        label="CEP" 
+        id="cep"
+        label="CEP"
         type="number"
         variant="outlined"
         margin="normal"
@@ -31,8 +33,8 @@ function DeliveryData({onSubmit}) {
         onChange={(event) => {
           setAddress(event.target.value);
         }}
-        id="address" 
-        label="Endereço" 
+        id="address"
+        label="Endereço"
         type="text"
         variant="outlined"
         margin="normal"
@@ -44,8 +46,8 @@ function DeliveryData({onSubmit}) {
         onChange={(event) => {
           setNum(event.target.value);
         }}
-        id="num" 
-        label="Número" 
+        id="num"
+        label="Número"
         type="number"
         variant="outlined"
         margin="normal"
@@ -56,8 +58,8 @@ function DeliveryData({onSubmit}) {
         onChange={(event) => {
           setCity(event.target.value);
         }}
-        id="city" 
-        label="Cidade" 
+        id="city"
+        label="Cidade"
         type="text"
         variant="outlined"
         margin="normal"
@@ -69,11 +71,24 @@ function DeliveryData({onSubmit}) {
         onChange={(event) => {
           setState(event.target.value);
         }}
-        id="state" 
-        label="Estado" 
+        id="state"
+        label="Estado"
         type="text"
         variant="outlined"
         margin="normal"
+      />
+
+      <TextField
+        value={coupon}
+        onChange={(event) => {
+          setCoupon(event.target.value);
+        }}
+        id="coupon"
+        label="Cupom de Desconto"
+        type="text"
+        variant="outlined"
+        margin="normal"
+        fullWidth
       />
 
       <Button type="submit" variant="contained" color="primary" fullWidth>

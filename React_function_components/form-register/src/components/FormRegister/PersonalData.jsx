@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 import RegisterValidations from "../../contexts/RegisterValidations";
+import useErrors from "../../hooks/useErrors";
 
 function PersonalData({ onSubmit }) {
   //ou (props). Injeção de dependência
@@ -13,28 +14,8 @@ function PersonalData({ onSubmit }) {
   const [cpf, setCpf] = useState("");
   const [promotions, setPromotions] = useState(true);
   const [news, setNews] = useState(true);
-  const [errors, setErrors] = useState({
-    cpf: { valid: true, text: "" },
-    name: { valid: true, text: "" },
-  });
-
   const validations = useContext(RegisterValidations);
-
-  function validateFields(event) {
-    const { name, value } = event.target;
-    const newState = { ...errors };
-    newState[name] = validations[name](value);
-    setErrors(newState);
-  }
-
-  function doSend() {
-    for (let field in errors) {
-      if (!errors[field].valid) {
-        return false;
-      }
-    }
-    return true;
-  }
+  const [errors, validateFields, doSend] = useErrors(validations);
 
   return (
     <form
