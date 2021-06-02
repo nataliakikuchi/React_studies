@@ -4,6 +4,7 @@ import FormRegister from "./components/FormRegister/FormRegister";
 import { Container, Typography } from "@material-ui/core";
 import "fontsource-roboto";
 import { validateCPF, validatePassword } from "./models/register";
+import RegisterValidations from "./contexts/RegisterValidations";
 
 class App extends Component {
   render() {
@@ -12,14 +13,15 @@ class App extends Component {
         <Typography variant="h3" component="h1" align="center">
           Formulário de Cadastro
         </Typography>
-        <FormRegister
-          onSubmit={onSubmitForm}
-          validations={{
+        <RegisterValidations.Provider
+          value={{
             cpf: validateCPF,
             password: validatePassword,
             name: validatePassword,
           }}
-        />
+        >
+          <FormRegister onSubmit={onSubmitForm} />
+        </RegisterValidations.Provider>
         {/* aqui as funções são passadas como propriedade. Chamei as propriedades de onSubmit e validateCPF*/}
       </Container>
     );

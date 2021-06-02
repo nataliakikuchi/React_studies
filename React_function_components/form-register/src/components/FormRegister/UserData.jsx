@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import React, { useContext, useState } from "react";
+import { TextField, Button, useControlled } from "@material-ui/core";
+import RegisterValidations from "../../contexts/RegisterValidations";
 
-function UserData({ onSubmit, validations }) {
+function UserData({ onSubmit }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ password: { valid: true, text: "" } });
+
+  const validations = useContext(RegisterValidations);
 
   function validateFields(event) {
     const { name, value } = event.target;
@@ -12,6 +15,8 @@ function UserData({ onSubmit, validations }) {
     newState[name] = validations[name](value);
     setErrors(newState);
   }
+
+  //Para cada campo dentro dos meus erros em erros vou ter que fazer uma verificação. Para cada campo dos meus erros vou validar. Esse campo, essa maneira de fazer o array vai me trazer só o nome das chaves que tenho dentro desse objeto. Se quero pegar o valor daquela chave tenho que falar que meus erros para o campo que peguei válido, se for válido, deixo passar. Se não for válido quero retornar, return, false, quer dizer que não posso.
 
   function doSend() {
     for (let field in errors) {
@@ -52,7 +57,7 @@ function UserData({ onSubmit, validations }) {
         }}
         onBlur={validateFields}
         error={!errors.password.valid}
-        helperText="A senha deve ter entre 4 e 60 caracteres"
+        helperText={errors.password.text}
         id="password"
         name="password"
         label="Senha"

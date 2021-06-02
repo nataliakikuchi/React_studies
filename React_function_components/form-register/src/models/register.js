@@ -15,3 +15,5 @@ function validatePassword(password) {
 }
 
 export { validateCPF, validatePassword };
+
+//na model ficam as regras de negócio

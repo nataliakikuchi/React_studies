@@ -4,7 +4,7 @@ import UserData from "./UserData";
 import DeliveryData from "./DeliveryData";
 import { Typography, Stepper, Step, StepLabel } from "@material-ui/core";
 
-function FormRegister({ onSubmit, validations }) {
+function FormRegister({ onSubmit }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [collectedData, setCollectedData] = useState({});
 
@@ -15,9 +15,9 @@ function FormRegister({ onSubmit, validations }) {
   });
 
   const forms = [
-    <UserData onSubmit={collectData} validations={validations} />,
-    <PersonalData onSubmit={collectData} validations={validations} />,
-    <DeliveryData onSubmit={collectData} validations={validations} />,
+    <UserData onSubmit={collectData} />,
+    <PersonalData onSubmit={collectData} />,
+    <DeliveryData onSubmit={collectData} />,
     <Typography variant="h4">Agradecemos o cadastro!</Typography>,
   ];
 

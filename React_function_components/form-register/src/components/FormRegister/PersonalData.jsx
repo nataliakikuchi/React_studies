@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
+import RegisterValidations from "../../contexts/RegisterValidations";
 
-function PersonalData({ onSubmit, validations }) {
+function PersonalData({ onSubmit }) {
   //ou (props). Injeção de dependência
   const [name, setName] = useState("");
   //const nome = arr[0];
@@ -16,6 +17,8 @@ function PersonalData({ onSubmit, validations }) {
     cpf: { valid: true, text: "" },
     name: { valid: true, text: "" },
   });
+
+  const validations = useContext(RegisterValidations);
 
   function validateFields(event) {
     const { name, value } = event.target;
