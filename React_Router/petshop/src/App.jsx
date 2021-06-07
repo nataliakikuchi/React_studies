@@ -3,6 +3,7 @@ import "./assets/css/base/base.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./paginas/Home";
 import Sobre from "./paginas/Sobre";
+import ErrorPage from "./paginas/ErrorPage";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
 
         <Route path="/sobre">
           <Sobre />
+        </Route>
+
+        <Route>
+          <ErrorPage />
         </Route>
       </Switch>
     </Router>
