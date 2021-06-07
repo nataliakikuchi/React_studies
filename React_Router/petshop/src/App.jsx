@@ -4,10 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./paginas/Home";
 import Sobre from "./paginas/Sobre";
 import ErrorPage from "./paginas/ErrorPage";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Router>
+      <Header />
       <Switch>
         <Route exact path="/">
           <Home />
