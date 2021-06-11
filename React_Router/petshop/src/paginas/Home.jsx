@@ -1,15 +1,18 @@
-import React from "react";
-import PostList from "../components/PostList";
-
+import React from 'react'
+import ListaCategorias from '../components/ListaCategorias'
+import ListaPost from '../components/ListaPost'
 const Home = () => {
+
   return (
     <main>
       <div className="container">
         <h2 className="titulo-pagina">Pet notícias</h2>
       </div>
-      <PostList url={"/posts"} />
+      <ListaCategorias />
+      <ListaPost url={'/posts'} />
     </main>
-  );
-};
+    
+  )
+}
 
-export default Home;
+export default Home
